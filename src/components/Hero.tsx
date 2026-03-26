@@ -40,7 +40,7 @@ export default function Hero() {
           </h1>
 
           <p
-            className="text-xl text-white/70 mb-10 leading-[1.8]"
+            className="text-xl text-white/80 mb-10 leading-[1.8]"
             style={{ animation: 'fadeInUp 1s ease 0.6s both' }}
           >
             A digital platform helping students, lecturers, and course reps coordinate
@@ -67,14 +67,14 @@ export default function Hero() {
             {FEATURE_CARDS.map(({ Icon, title, desc }, i) => (
               <div
                 key={title}
-                className="group bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.08] hover:border-brand-blue"
+                className="group bg-white/[0.09] backdrop-blur-md border border-white/[0.16] rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.14] hover:border-brand-blue"
                 style={{ animation: 'fadeInUp 1s ease both', animationDelay: `${0.8 + i * 0.2}s` }}
               >
                 <div className="w-12 h-12 bg-gradient-blue rounded-xl flex items-center justify-center mb-4">
                   <Icon size={22} className="text-white" />
                 </div>
                 <h3 className="font-semibold text-[1.05rem] mb-1">{title}</h3>
-                <p className="text-sm text-white/60">{desc}</p>
+                <p className="text-sm text-white/75">{desc}</p>
               </div>
             ))}
           </div>

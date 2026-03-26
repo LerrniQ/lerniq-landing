@@ -25,7 +25,7 @@ function LinkColumn({ title, links }: LinkColumnProps) {
           <li key={label}>
             <a
               href={href}
-              className="text-white/60 no-underline transition-colors duration-300 hover:text-brand-gold"
+              className="text-white/75 no-underline transition-colors duration-300 hover:text-brand-gold"
             >
               {label}
             </a>
@@ -38,7 +38,7 @@ function LinkColumn({ title, links }: LinkColumnProps) {
 
 export default function Footer() {
   return (
-    <footer className="px-[5%] pt-16 pb-8 bg-brand-dark-blue border-t border-white/10">
+    <footer className="px-[5%] pt-16 pb-8 bg-brand-dark-blue border-t border-white/[0.16]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-12">
           {/* Brand */}
@@ -47,7 +47,7 @@ export default function Footer() {
               <img src={logoImg} alt="LerniQ Logo" className="w-10 h-10 rounded-lg object-contain" />
               LerniQ
             </div>
-            <p className="text-white/60 mb-6 leading-[1.7]">
+            <p className="text-white/75 mb-6 leading-[1.7]">
               Reimagining campus learning for Nigerian tertiary institutions. Making academic
               coordination seamless, accessible, and efficient.
             </p>
@@ -57,7 +57,7 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white no-underline transition-all duration-300 hover:bg-brand-blue hover:-translate-y-0.5"
+                  className="w-10 h-10 bg-white/[0.16] rounded-full flex items-center justify-center text-white no-underline transition-all duration-300 hover:bg-brand-blue hover:-translate-y-0.5"
                 >
                   <Icon size={18} />
                 </a>
@@ -70,7 +70,7 @@ export default function Footer() {
           <LinkColumn title="Resources" links={RESOURCE_LINKS} />
         </div>
 
-        <div className="pt-8 border-t border-white/10 text-center text-white/50 text-sm">
+        <div className="pt-8 border-t border-white/[0.16] text-center text-white/65 text-sm">
           © 2025 LerniQ. All rights reserved. Built with 💙 for Nigerian campuses.
         </div>
       </div>

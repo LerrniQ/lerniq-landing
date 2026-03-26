@@ -71,7 +71,7 @@ export default function Benefits() {
                 'px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 cursor-pointer border-2',
                 active === key
                   ? 'bg-gradient-brand text-white border-transparent'
-                  : 'bg-white/5 text-white border-white/20 hover:bg-white/10 hover:border-brand-gold',
+                  : 'bg-white/[0.09] text-white border-white/30 hover:bg-white/[0.14] hover:border-brand-gold',
               )}
             >
               {TABS[key].label}
@@ -88,11 +88,11 @@ export default function Benefits() {
           {TABS[active].cards.map(({ Icon, title, desc }) => (
             <div
               key={title}
-              className="bg-white/5 border border-white/10 rounded-3xl p-10 transition-all duration-300 hover:scale-105 hover:border-brand-gold hover:shadow-[0_15px_50px_rgba(255,198,0,0.2)]"
+              className="bg-white/[0.09] border border-white/[0.16] rounded-3xl p-10 transition-all duration-300 hover:scale-105 hover:border-brand-gold hover:shadow-[0_15px_50px_rgba(255,198,0,0.2)]"
             >
               <Icon size={36} className="text-brand-gold mb-4" strokeWidth={1.5} />
               <h4 className="text-2xl font-semibold mb-3">{title}</h4>
-              <p className="text-white/70 leading-[1.7]">{desc}</p>
+              <p className="text-white/80 leading-[1.7]">{desc}</p>
             </div>
           ))}
         </div>

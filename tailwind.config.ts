@@ -10,7 +10,7 @@ const config: Config = {
         // Brand palette
         'brand-blue':      '#2e3fe2',
         'brand-gold':      '#ffc600',
-        'brand-dark':      '#0a0b0f',
+        'brand-dark':      '#0d1117',
         'brand-dark-blue': '#1a1f4d',
         // shadcn/ui semantic tokens
         border:     'hsl(var(--border))',

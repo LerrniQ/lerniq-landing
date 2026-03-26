@@ -24,12 +24,12 @@ export default function Features() {
   const ref = useScrollReveal<HTMLElement>()
 
   return (
-    <section id="features" ref={ref} className="scroll-reveal py-24 px-[5%] bg-brand-dark-blue/30">
+    <section id="features" ref={ref} className="scroll-reveal py-24 px-[5%] bg-brand-dark-blue/55">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <Badge className="mb-4">Core Features</Badge>
           <h2>How <span className="gradient-text">LerniQ</span> Works</h2>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+          <p className="text-xl text-white/80 max-w-2xl mx-auto">
             Everything you need for a seamless academic experience
           </p>
         </div>
@@ -38,7 +38,7 @@ export default function Features() {
           {FEATURES.map(({ Icon, title, desc }, i) => (
             <div
               key={title}
-              className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:bg-white/5 hover:border-brand-blue hover:-translate-y-1"
+              className="bg-white/[0.07] border border-white/[0.15] rounded-2xl p-8 transition-all duration-300 hover:bg-white/[0.12] hover:border-brand-blue hover:-translate-y-1"
             >
               <div className="flex items-center gap-3 mb-4">
                 <span className="w-8 h-8 bg-gradient-gold rounded-full flex items-center justify-center text-sm font-bold text-brand-dark flex-shrink-0">
@@ -49,7 +49,7 @@ export default function Features() {
                 </div>
               </div>
               <h4 className="text-xl font-semibold mb-3">{title}</h4>
-              <p className="text-white/70 leading-[1.7]">{desc}</p>
+              <p className="text-white/80 leading-[1.7]">{desc}</p>
             </div>
           ))}
         </div>
