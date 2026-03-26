@@ -14,10 +14,10 @@ export default function Demo() {
           <p className="text-xl text-white/70 max-w-2xl mx-auto">See what the platform will look like</p>
         </div>
 
-        <div className="max-w-4xl mx-auto bg-white/5 border border-white/10 rounded-3xl p-8">
-          <div className="aspect-video bg-brand-blue/10 rounded-2xl flex flex-col items-center justify-center gap-4 border-2 border-dashed border-white/20">
-            <Smartphone size={48} className="text-white/40" />
-            <span className="text-white/50 text-lg">Platform Demo Coming Soon</span>
+        <div className="max-w-4xl mx-auto bg-white/[0.09] border border-white/[0.16] rounded-3xl p-8">
+          <div className="aspect-video bg-brand-blue/15 rounded-2xl flex flex-col items-center justify-center gap-4 border-2 border-dashed border-white/30">
+            <Smartphone size={48} className="text-white/55" />
+            <span className="text-white/65 text-lg">Platform Demo Coming Soon</span>
           </div>
         </div>
       </div>

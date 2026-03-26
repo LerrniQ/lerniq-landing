@@ -15,7 +15,7 @@ function scrollTo(id: string) {
 export default function Navbar() {
   return (
     <nav
-      className="fixed top-0 w-full px-[5%] py-6 bg-brand-dark/80 backdrop-blur-xl border-b border-white/10 z-[1000]"
+      className="fixed top-0 w-full px-[5%] py-6 bg-brand-dark/90 backdrop-blur-xl border-b border-white/[0.16] z-[1000]"
       style={{ animation: 'slideDown 0.8s ease' }}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">

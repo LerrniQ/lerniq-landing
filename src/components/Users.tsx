@@ -57,7 +57,7 @@ export default function Users() {
         <div className="text-center mb-16">
           <Badge className="mb-4">Built for You</Badge>
           <h2>Who is <span className="gradient-text">LerniQ</span> For?</h2>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+          <p className="text-xl text-white/80 max-w-2xl mx-auto">
             Designed specifically for the Nigerian campus community
           </p>
         </div>
@@ -66,16 +66,16 @@ export default function Users() {
           {USER_TYPES.map(({ Icon, title, subtitle, items }) => (
             <div
               key={title}
-              className="relative bg-white/5 backdrop-blur-md border border-white/10 rounded-[30px] p-12 overflow-hidden transition-all duration-300 group hover:-translate-y-2 hover:border-brand-gold hover:shadow-[0_25px_70px_rgba(255,198,0,0.15)] before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-1 before:bg-gradient-brand before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
+              className="relative bg-white/[0.09] backdrop-blur-md border border-white/[0.16] rounded-[30px] p-12 overflow-hidden transition-all duration-300 group hover:-translate-y-2 hover:border-brand-gold hover:shadow-[0_25px_70px_rgba(255,198,0,0.15)] before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-1 before:bg-gradient-brand before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
             >
               <Icon size={52} className="text-brand-gold mb-6" strokeWidth={1.5} />
               <h3 className="text-[1.8rem] font-bold text-brand-gold mb-2">{title}</h3>
-              <p className="text-white/70 mb-6">{subtitle}</p>
+              <p className="text-white/80 mb-6">{subtitle}</p>
               <ul className="space-y-0 list-none">
                 {items.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-3 py-3 text-white/80 border-b border-white/[0.06] last:border-0"
+                    className="flex items-start gap-3 py-3 text-white/90 border-b border-white/[0.10] last:border-0"
                   >
                     <Check size={16} className="text-brand-gold mt-0.5 flex-shrink-0" />
                     {item}

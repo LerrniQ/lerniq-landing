@@ -40,12 +40,12 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" ref={ref} className="scroll-reveal py-24 px-[5%] bg-brand-dark-blue/30">
+    <section id="contact" ref={ref} className="scroll-reveal py-24 px-[5%] bg-brand-dark-blue/55">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-16">
           <Badge className="mb-4">Get in Touch</Badge>
           <h2>Join the <span className="gradient-text">Movement</span></h2>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+          <p className="text-xl text-white/80 max-w-2xl mx-auto">
             Want to invest, volunteer, or be part of something transformative? Let's connect and
             build the future of campus learning together.
           </p>
@@ -59,7 +59,7 @@ export default function Contact() {
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 space-y-6"
+          className="bg-white/[0.09] border border-white/[0.16] rounded-3xl p-8 md:p-12 space-y-6"
         >
           <div>
             <Label htmlFor="name">Full Name</Label>

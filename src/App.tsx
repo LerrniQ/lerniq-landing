@@ -1,31 +1,28 @@
-import Navbar from '@/components/Navbar'
-import Hero from '@/components/Hero'
-import About from '@/components/About'
-import Users from '@/components/Users'
-import Features from '@/components/Features'
-import Benefits from '@/components/Benefits'
-import Survey from '@/components/Survey'
-import Demo from '@/components/Demo'
-import Contact from '@/components/Contact'
-import Footer from '@/components/Footer'
-import ParallaxBackground from '@/components/ParallaxBackground'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import Landing        from '@/pages/Landing'
+import Signup         from '@/pages/Signup'
+import CourseRep      from '@/pages/CourseRep'
+import AdminLogin     from '@/pages/admin/Login'
+import AdminDashboard from '@/pages/admin/Dashboard'
+
+function PrivateAdminRoute({ children }: { children: React.ReactNode }) {
+  return localStorage.getItem('admin_token')
+    ? <>{children}</>
+    : <Navigate to="/admin" replace />
+}
 
 export default function App() {
   return (
-    <>
-      <ParallaxBackground />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Users />
-        <Features />
-        <Benefits />
-        <Survey />
-        <Demo />
-        <Contact />
-      </main>
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/"                 element={<Landing />}      />
+        <Route path="/join"             element={<Signup />}       />
+        <Route path="/course-rep"       element={<CourseRep />}    />
+        <Route path="/admin"            element={<AdminLogin />}   />
+        <Route path="/admin/dashboard"  element={
+          <PrivateAdminRoute><AdminDashboard /></PrivateAdminRoute>
+        } />
+      </Routes>
+    </BrowserRouter>
   )
 }
