@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { LogOut, Users2, GraduationCap, BookUser, TrendingUp } from 'lucide-react'
+import { LogOut, Users2, GraduationCap, BookUser, TrendingUp, Copy, Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import logoImg from '@/assets/lerniq-logo.png'
 
@@ -28,6 +28,7 @@ interface CourseRep {
   ref_id: string
   referral_count: number
   created_at: string
+  typeform_link: string | null
 }
 
 function authHeaders() {
@@ -53,6 +54,13 @@ export default function Dashboard() {
   const [reps, setReps]         = useState<CourseRep[]>([])
   const [loading, setLoading]   = useState(true)
   const [error, setError]       = useState<string | null>(null)
+  const [copiedId, setCopiedId] = useState<string | null>(null)
+
+  const copyLink = (refId: string, link: string) => {
+    navigator.clipboard.writeText(link)
+    setCopiedId(refId)
+    setTimeout(() => setCopiedId(null), 2500)
+  }
 
   useEffect(() => {
     const token = localStorage.getItem('admin_token')
@@ -210,6 +218,7 @@ export default function Dashboard() {
                     <th className="px-6 py-3 font-medium">School</th>
                     <th className="px-6 py-3 font-medium">Ref ID</th>
                     <th className="px-6 py-3 font-medium">Lecturer submissions</th>
+                    <th className="px-6 py-3 font-medium">Lecturer link</th>
                     <th className="px-6 py-3 font-medium">Registered</th>
                   </tr>
                 </thead>
@@ -224,6 +233,21 @@ export default function Dashboard() {
                         <span className={`font-bold text-base ${r.referral_count > 0 ? 'text-brand-gold' : 'text-white/30'}`}>
                           {r.referral_count}
                         </span>
+                      </td>
+                      <td className="px-6 py-4">
+                        {r.typeform_link ? (
+                          <button
+                            onClick={() => copyLink(r.ref_id, r.typeform_link!)}
+                            className="flex items-center gap-1.5 text-xs text-white/50 hover:text-white transition-colors"
+                          >
+                            {copiedId === r.ref_id
+                              ? <><Check size={13} className="text-green-400" /> Copied</>
+                              : <><Copy size={13} /> Copy link</>
+                            }
+                          </button>
+                        ) : (
+                          <span className="text-white/20 text-xs">—</span>
+                        )}
                       </td>
                       <td className="px-6 py-4 text-white/40">{formatDate(r.created_at)}</td>
                     </tr>
