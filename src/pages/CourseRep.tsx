@@ -17,9 +17,10 @@ if (!API_URL) {
 }
 
 const schema = z.object({
-  name:   z.string().min(2, 'Name must be at least 2 characters'),
-  email:  z.string().email('Enter a valid email address'),
-  school: z.string().min(2, 'Enter your school name'),
+  name:   z.string().min(2,  'Name must be at least 2 characters'),
+  phone:  z.string().min(7,  'Enter a valid phone number'),
+  email:  z.string().email('Enter a valid email address').optional().or(z.literal('')),
+  school: z.string().min(2,  'Enter your school name'),
 })
 type FormData = z.infer<typeof schema>
 
@@ -143,7 +144,16 @@ export default function CourseRep() {
                 </div>
 
                 <div>
-                  <Label htmlFor="email">Email address</Label>
+                  <Label htmlFor="phone">Phone number</Label>
+                  <Input id="phone" type="tel" placeholder="+234 800 000 0000" {...register('phone')} />
+                  {errors.phone && <p className="mt-1.5 text-sm text-red-400">{errors.phone.message}</p>}
+                </div>
+
+                <div>
+                  <Label htmlFor="email">
+                    Email address{' '}
+                    <span className="text-white/40 font-normal">(optional)</span>
+                  </Label>
                   <Input id="email" type="email" placeholder="you@example.com" {...register('email')} />
                   {errors.email && <p className="mt-1.5 text-sm text-red-400">{errors.email.message}</p>}
                 </div>
