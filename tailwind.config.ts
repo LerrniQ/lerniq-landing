@@ -63,6 +63,14 @@ const config: Config = {
           from: { opacity: '0', transform: 'translateY(30px)' },
           to:   { opacity: '1', transform: 'translateY(0)' },
         },
+        slideInFromRight: {
+          from: { opacity: '0', transform: 'translateX(48px)' },
+          to:   { opacity: '1', transform: 'translateX(0)' },
+        },
+        slideInFromLeft: {
+          from: { opacity: '0', transform: 'translateX(-48px)' },
+          to:   { opacity: '1', transform: 'translateX(0)' },
+        },
         slideDown: {
           from: { transform: 'translateY(-100%)' },
           to:   { transform: 'translateY(0)' },
@@ -77,7 +85,9 @@ const config: Config = {
         float:          'float 20s ease-in-out infinite',
         'fade-in-up':   'fadeInUp 1s ease both',
         'slide-down':   'slideDown 0.8s ease',
-        'bg-icon-float':'bgIconFloat 14s ease-in-out infinite',
+        'bg-icon-float':       'bgIconFloat 14s ease-in-out infinite',
+        'slide-in-from-right': 'slideInFromRight 0.35s ease both',
+        'slide-in-from-left':  'slideInFromLeft  0.35s ease both',
       },
     },
   },

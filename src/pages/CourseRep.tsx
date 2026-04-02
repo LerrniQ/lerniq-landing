@@ -25,7 +25,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>
 
 export default function CourseRep() {
-  const [typeformLink, setTypeformLink] = useState<string | null>(null)
+  const [lecturerLink, setTypeformLink] = useState<string | null>(null)
   const [copied, setCopied]             = useState(false)
   const [serverError, setServerError]   = useState<string | null>(null)
   const [returning, setReturning]       = useState(false)
@@ -39,11 +39,11 @@ export default function CourseRep() {
   const onSubmit = async (data: FormData) => {
     setServerError(null)
     try {
-      const res = await axios.post<{ typeformLink: string; returning?: boolean }>(
+      const res = await axios.post<{ lecturerLink: string; returning?: boolean }>(
         `${API_URL}/course-rep`,
         data
       )
-      setTypeformLink(res.data.typeformLink)
+      setTypeformLink(res.data.lecturerLink)
       setReturning(res.data.returning ?? false)
     } catch (err) {
       if (axios.isAxiosError(err)) {
@@ -55,8 +55,8 @@ export default function CourseRep() {
   }
 
   const handleCopy = () => {
-    if (!typeformLink) return
-    navigator.clipboard.writeText(typeformLink)
+    if (!lecturerLink) return
+    navigator.clipboard.writeText(lecturerLink)
     setCopied(true)
     setTimeout(() => setCopied(false), 2500)
   }
@@ -79,7 +79,7 @@ export default function CourseRep() {
       <main className="flex-1 flex items-center justify-center px-[5%] py-16">
         <div className="w-full max-w-md" style={{ animation: 'fadeInUp 0.8s ease both' }}>
 
-          {typeformLink ? (
+          {lecturerLink ? (
             /* ── Success state ── */
             <div className="text-center space-y-8">
               <div>
@@ -97,7 +97,7 @@ export default function CourseRep() {
               <div className="bg-white/[0.09] border border-white/[0.16] rounded-2xl p-6 space-y-4">
                 <p className="text-sm text-white/50 font-medium uppercase tracking-wider">Lecturer survey link</p>
                 <div className="bg-white/[0.06] border border-white/[0.12] rounded-xl px-4 py-3 font-mono text-sm text-brand-gold break-all">
-                  {typeformLink}
+                  {lecturerLink}
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <Button onClick={handleCopy} variant={copied ? 'outline' : 'default'}>
@@ -105,7 +105,7 @@ export default function CourseRep() {
                   </Button>
                   <Button
                     variant="outline"
-                    onClick={() => window.open(typeformLink, '_blank')}
+                    onClick={() => window.open(lecturerLink, '_blank')}
                   >
                     <ExternalLink size={15} /> Preview
                   </Button>
