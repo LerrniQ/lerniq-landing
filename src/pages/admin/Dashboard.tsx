@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { LogOut, Users2, GraduationCap, BookUser, TrendingUp, Copy, Check } from 'lucide-react'
+import { LogOut, Users2, GraduationCap, BookUser, TrendingUp, Copy, Check, Radio } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import logoImg from '@/assets/lerniq-logo.png'
 
@@ -28,7 +28,7 @@ interface CourseRep {
   ref_id: string
   referral_count: number
   created_at: string
-  typeform_link: string | null
+  lecturer_link: string | null
 }
 
 function authHeaders() {
@@ -110,9 +110,14 @@ export default function Dashboard() {
             <p className="text-white/40 text-xs">Admin Dashboard</p>
           </div>
         </div>
-        <Button variant="outline" onClick={logout}>
-          <LogOut size={15} /> Sign out
-        </Button>
+        <div className="flex items-center gap-3">
+          <Button variant="outline" onClick={() => navigate('/admin/surveys')}>
+            <Radio size={15} /> Surveys
+          </Button>
+          <Button variant="outline" onClick={logout}>
+            <LogOut size={15} /> Sign out
+          </Button>
+        </div>
       </header>
 
       <main className="px-[5%] py-10 max-w-7xl mx-auto">
@@ -235,9 +240,9 @@ export default function Dashboard() {
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        {r.typeform_link ? (
+                        {r.lecturer_link ? (
                           <button
-                            onClick={() => copyLink(r.ref_id, r.typeform_link!)}
+                            onClick={() => copyLink(r.ref_id, r.lecturer_link!)}
                             className="flex items-center gap-1.5 text-xs text-white/50 hover:text-white transition-colors"
                           >
                             {copiedId === r.ref_id
