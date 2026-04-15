@@ -24,6 +24,7 @@ interface WaitlistUser {
 interface CourseRep {
   name: string
   email: string
+  phone: string | null
   school: string
   ref_id: string
   referral_count: number
@@ -54,12 +55,19 @@ export default function Dashboard() {
   const [reps, setReps]         = useState<CourseRep[]>([])
   const [loading, setLoading]   = useState(true)
   const [error, setError]       = useState<string | null>(null)
-  const [copiedId, setCopiedId] = useState<string | null>(null)
+  const [copiedId,    setCopiedId]    = useState<string | null>(null)
+  const [copiedPhone, setCopiedPhone] = useState<string | null>(null)
 
   const copyLink = (refId: string, link: string) => {
     navigator.clipboard.writeText(link)
     setCopiedId(refId)
     setTimeout(() => setCopiedId(null), 2500)
+  }
+
+  const copyPhone = (refId: string, phone: string) => {
+    navigator.clipboard.writeText(phone)
+    setCopiedPhone(refId)
+    setTimeout(() => setCopiedPhone(null), 2500)
   }
 
   useEffect(() => {
@@ -215,31 +223,48 @@ export default function Dashboard() {
               <p className="font-semibold">{reps.length} course reps registered</p>
             </div>
             <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+              <table className="min-w-[900px] w-full text-sm">
                 <thead>
                   <tr className="border-b border-white/[0.08] text-white/40 text-left">
-                    <th className="px-6 py-3 font-medium">Name</th>
-                    <th className="px-6 py-3 font-medium">Email</th>
-                    <th className="px-6 py-3 font-medium">School</th>
-                    <th className="px-6 py-3 font-medium">Ref ID</th>
-                    <th className="px-6 py-3 font-medium">Lecturer submissions</th>
-                    <th className="px-6 py-3 font-medium">Lecturer link</th>
-                    <th className="px-6 py-3 font-medium">Registered</th>
+                    <th className="px-6 py-3 font-medium whitespace-nowrap">Name</th>
+                    <th className="px-6 py-3 font-medium whitespace-nowrap">Phone</th>
+                    <th className="px-6 py-3 font-medium whitespace-nowrap">Email</th>
+                    <th className="px-6 py-3 font-medium whitespace-nowrap">School</th>
+                    <th className="px-6 py-3 font-medium whitespace-nowrap">Ref ID</th>
+                    <th className="px-6 py-3 font-medium whitespace-nowrap">Lecturer submissions</th>
+                    <th className="px-6 py-3 font-medium whitespace-nowrap">Lecturer link</th>
+                    <th className="px-6 py-3 font-medium whitespace-nowrap">Registered</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reps.map((r) => (
                     <tr key={r.ref_id} className="border-b border-white/[0.05] hover:bg-white/[0.03]">
-                      <td className="px-6 py-4 font-medium">{r.name}</td>
-                      <td className="px-6 py-4 text-white/60">{r.email}</td>
-                      <td className="px-6 py-4 text-white/60">{r.school}</td>
-                      <td className="px-6 py-4 font-mono text-xs text-brand-gold">{r.ref_id}</td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 font-medium whitespace-nowrap">{r.name}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {r.phone ? (
+                          <button
+                            onClick={() => copyPhone(r.ref_id, r.phone!)}
+                            className="flex items-center gap-1.5 text-xs text-white/60 hover:text-white transition-colors font-mono"
+                          >
+                            {r.phone}
+                            {copiedPhone === r.ref_id
+                              ? <Check size={12} className="text-green-400 shrink-0" />
+                              : <Copy size={12} className="shrink-0 opacity-40" />
+                            }
+                          </button>
+                        ) : (
+                          <span className="text-white/20 text-xs">—</span>
+                        )}
+                      </td>
+                      <td className="px-6 py-4 text-white/60 whitespace-nowrap">{r.email || '—'}</td>
+                      <td className="px-6 py-4 text-white/60 whitespace-nowrap">{r.school}</td>
+                      <td className="px-6 py-4 font-mono text-xs text-brand-gold whitespace-nowrap">{r.ref_id}</td>
+                      <td className="px-6 py-4 text-center">
                         <span className={`font-bold text-base ${r.referral_count > 0 ? 'text-brand-gold' : 'text-white/30'}`}>
                           {r.referral_count}
                         </span>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 whitespace-nowrap">
                         {r.lecturer_link ? (
                           <button
                             onClick={() => copyLink(r.ref_id, r.lecturer_link!)}
@@ -254,7 +279,7 @@ export default function Dashboard() {
                           <span className="text-white/20 text-xs">—</span>
                         )}
                       </td>
-                      <td className="px-6 py-4 text-white/40">{formatDate(r.created_at)}</td>
+                      <td className="px-6 py-4 text-white/40 whitespace-nowrap">{formatDate(r.created_at)}</td>
                     </tr>
                   ))}
                 </tbody>
