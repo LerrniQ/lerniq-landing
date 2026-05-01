@@ -8,7 +8,9 @@ import AdminLogin       from '@/pages/admin/Login'
 import AdminDashboard   from '@/pages/admin/Dashboard'
 import AdminSurveys     from '@/pages/admin/Surveys'
 import SurveyBuilder    from '@/pages/admin/SurveyBuilder'
-import SurveyResponses  from '@/pages/admin/SurveyResponses'
+import SurveyResponses       from '@/pages/admin/SurveyResponses'
+import Ambassadors           from '@/pages/admin/Ambassadors'
+import AmbassadorResponses   from '@/pages/admin/AmbassadorResponses'
 
 function PrivateAdminRoute({ children }: { children: React.ReactNode }) {
   return localStorage.getItem('admin_token')
@@ -40,6 +42,12 @@ export default function App() {
         } />
         <Route path="/admin/surveys/:id/responses" element={
           <PrivateAdminRoute><SurveyResponses /></PrivateAdminRoute>
+        } />
+        <Route path="/admin/ambassadors" element={
+          <PrivateAdminRoute><Ambassadors /></PrivateAdminRoute>
+        } />
+        <Route path="/admin/ambassadors/:id/responses" element={
+          <PrivateAdminRoute><AmbassadorResponses /></PrivateAdminRoute>
         } />
       </Routes>
     </BrowserRouter>

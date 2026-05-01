@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { LogOut, Users2, GraduationCap, BookUser, TrendingUp, Copy, Check, Radio } from 'lucide-react'
+import { LogOut, Users2, GraduationCap, BookUser, TrendingUp, Copy, Check, Radio, Star } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import logoImg from '@/assets/lerniq-logo.png'
 
@@ -119,6 +119,9 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="flex items-center gap-3">
+          <Button variant="outline" onClick={() => navigate('/admin/ambassadors')}>
+            <Star size={15} /> Ambassadors
+          </Button>
           <Button variant="outline" onClick={() => navigate('/admin/surveys')}>
             <Radio size={15} /> Surveys
           </Button>
